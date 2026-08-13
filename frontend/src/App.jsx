@@ -1,14 +1,10 @@
-import { useState } from 'react'
-import './App.css'
+import Kanban from './pages/Kanban';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <div id="teste" >
-        oi teste
-      </div>
+    <Kanban />
     </>
   )
 }
