@@ -1,4 +1,5 @@
 import TaskCard from "./TaskCard";
+import Modal from "./TaskFormModal";
 
 const columnStyles = {
   todo: {
@@ -32,7 +33,7 @@ const columnStyles = {
   },
 };
 
-export default function Column({ type, tasks = [] }) {
+export default function Column({ type, handleEdit, tasks = [] }) {
   const style = columnStyles[type];
 
   return (
@@ -67,7 +68,11 @@ export default function Column({ type, tasks = [] }) {
       {/* Lista de tarefas */}
       <div className="flex-1 space-y-3 p-4">
         {tasks.map((task) => (
-          <TaskCard key={task.id} task={task} />
+          <TaskCard
+            key={task.id}
+            task={task}
+            onEdit={handleEdit}
+          />
         ))}
       </div>
     </section>

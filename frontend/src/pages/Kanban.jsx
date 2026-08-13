@@ -1,5 +1,8 @@
 import Column from "../components/Column";
 import ButtonAddTask from "../components/ButtonAddTask";
+import TaskFormModal from "../components/TaskFormModal";
+import DeleteConfirmModal from "../components/DeleteConfirmModal";
+import { useState } from "react";
 
 const tasks = [
   {
@@ -35,24 +38,68 @@ const tasks = [
 ];
 
 function Kanban() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("create");
+  const [selectedTask, setSelectedTask] = useState(null);
+
+  function handleCreate() {
+    setModalMode("create");
+    setSelectedTask(null);
+    setIsModalOpen(true);
+  }
+
+  function handleEdit(task) {
+    setModalMode("edit");
+    setSelectedTask(task);
+    setIsModalOpen(true);
+    console.log(task);
+  }
+
+  function handleDeleteRequest() {
+    setIsModalOpen(false);
+    setIsDeleteModalOpen(true);
+  }
+
+
   return (
     <main className="min-h-screen bg-gray-100 p-6">
-      <ButtonAddTask onClick={() => console.log("Abrir modal")} />
+      <ButtonAddTask onClick={handleCreate} />
       <div className="grid grid-cols-3 gap-6">
         <Column
           type="todo"
+          handleEdit={handleEdit}
           tasks={tasks.filter((task) => task.status === "todo")}
         />
 
         <Column
           type="progress"
+          handleEdit={handleEdit}
           tasks={tasks.filter((task) => task.status === "progress")}
         />
 
         <Column
           type="done"
+          handleEdit={handleEdit}
           tasks={tasks.filter((task) => task.status === "done")}
         />
+
+        <TaskFormModal
+          isOpen={isModalOpen}
+          mode={modalMode}
+          task={selectedTask}
+          handleDeleteRequest = {handleDeleteRequest}
+          onClose={() => setIsModalOpen(false)}
+        />
+
+        <DeleteConfirmModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={() => {
+          console.log("CONFIRMAR DELETE");
+        }}
+      />
+
       </div>
     </main>
   );
