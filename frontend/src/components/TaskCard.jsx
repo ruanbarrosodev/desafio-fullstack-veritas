@@ -1,6 +1,10 @@
-export default function TaskCard({ task, onEdit }) {
+export default function TaskCard({ 
+  task, 
+  onEdit }) {
   return (
-    <div className="rounded-xl bg-white p-4 shadow-md">
+    <div 
+    draggable
+    className="rounded-xl bg-white p-4 shadow-md">
       <h3 className="font-semibold">{task.title}</h3>
 
       <p className="mt-1 text-sm text-gray-500">

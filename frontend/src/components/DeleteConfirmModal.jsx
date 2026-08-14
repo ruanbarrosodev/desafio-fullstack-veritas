@@ -50,7 +50,7 @@ export default function DeleteConfirmModal({
           {/* Sim */}
           <button
             type="button"
-            onClick={onConfirm}
+            onClick={() => onConfirm()}
             className="flex-1 cursor-pointer rounded-xl bg-red-600 px-5 py-3 font-semibold text-white shadow-md transition hover:bg-red-700 hover:shadow-lg"
           >
             Sim, excluir
