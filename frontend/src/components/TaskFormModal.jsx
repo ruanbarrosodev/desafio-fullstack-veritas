@@ -14,12 +14,20 @@ export default function TaskFormModal({
   const isEditing = mode === "edit";
 
   const [title, setTitle] = useState(isEditing ? task?.title : "");
-  const [titleColor, setTitleColor] = useState("#1e293b");
   const [description, setDescription] = useState(
     isEditing ? task?.description : ""
   );
-  const [descriptionColor, setDescriptionColor] = useState("#1e293b");
-  const [cardColor, setCardColor] = useState("#ffffff");
+  const [titleColor, setTitleColor] = useState(
+  isEditing ? task?.titleColor : "#1e293b"
+);
+
+const [descriptionColor, setDescriptionColor] = useState(
+  isEditing ? task?.descriptionColor : "#1e293b"
+);
+
+const [cardColor, setCardColor] = useState(
+  isEditing ? task?.cardColor : "#ffffff"
+);
   const [status, setStatus] = useState(isEditing ? task?.status : "todo");
 
   const taskData = {
@@ -135,6 +143,25 @@ export default function TaskFormModal({
         </div>
       </div>           
 
+      
+        <div className="mb-5 border-t border-slate-200 pt-5">
+          <p className="mb-3 text-sm font-semibold text-slate-700">
+            Aparência do card
+          </p>
+
+          <label className="mb-2 block text-sm text-slate-500">
+            Cor do card
+          </label>
+
+          <input
+            type="color"
+            value={cardColor}
+            onChange={(event) => setCardColor(event.target.value)}
+            className="h-10 w-16 cursor-pointer rounded-lg border border-slate-200 p-1"
+          />
+        </div>
+        
+
         <div className="mb-5">
           <label className="mb-2 block text-sm font-semibold text-slate-700">
             Título
@@ -188,24 +215,6 @@ export default function TaskFormModal({
             className="h-10 w-16 cursor-pointer rounded-lg border border-slate-200 p-1"
           />
         </div>
-
-        <div className="mb-5 border-t border-slate-200 pt-5">
-          <p className="mb-3 text-sm font-semibold text-slate-700">
-            Aparência do card
-          </p>
-
-          <label className="mb-2 block text-sm text-slate-500">
-            Cor do card
-          </label>
-
-          <input
-            type="color"
-            value={cardColor}
-            onChange={(event) => setCardColor(event.target.value)}
-            className="h-10 w-16 cursor-pointer rounded-lg border border-slate-200 p-1"
-          />
-        </div>
-
         {isEditing ? (
           <div className="flex gap-3">
             <button

@@ -1,5 +1,6 @@
 import TaskCard from "./TaskCard";
 import Modal from "./TaskFormModal";
+import { useDroppable } from "@dnd-kit/core";
 
 const columnStyles = {
   todo: {
@@ -35,9 +36,13 @@ const columnStyles = {
 
 export default function Column({ type, handleEdit, tasks = [] }) {
   const style = columnStyles[type];
+  const { setNodeRef } = useDroppable({
+    id: type,
+  });
 
   return (
     <section
+      ref={setNodeRef}
       className={`flex min-h-[70vh] flex-col overflow-hidden rounded-2xl border shadow-xl shadow-black/5 ${style.container}`}
     >
       {/* Cabeçalho */}

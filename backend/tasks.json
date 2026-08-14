@@ -1,38 +1,56 @@
 [
   {
     "id": 1,
-    "title": "dw",
-    "description": "dw",
+    "title": "Revisar e-mails e mensagens",
     "titleColor": "#1e293b",
-    "descriptionColor": "#1e293b",
+    "description": "Verificar mensagens pendentes e responder o que for prioritário.",
+    "descriptionColor": "#64748b",
+    "cardColor": "#ffffff",
+    "status": "todo"
+  },
+  {
+    "id": 2,
+    "title": "Organizar agenda do dia",
+    "titleColor": "#1e293b",
+    "description": "Conferir compromissos, horários e tarefas planejadas para hoje.",
+    "descriptionColor": "#64748b",
     "cardColor": "#ffffff",
     "status": "todo"
   },
   {
     "id": 3,
-    "title": "xa",
-    "description": "xa",
+    "title": "Finalizar relatório semanal",
     "titleColor": "#1e293b",
-    "descriptionColor": "#1e293b",
-    "cardColor": "#ffffff",
-    "status": "todo"
-  },
-  {
-    "id": 5,
-    "title": "dsadsad",
-    "description": "das",
-    "titleColor": "#1e293b",
-    "descriptionColor": "#1e293b",
-    "cardColor": "#ffffff",
+    "description": "Revisar os dados da semana e finalizar o relatório para envio.",
+    "descriptionColor": "#64748b",
+    "cardColor": "#fef9c3",
     "status": "progress"
   },
   {
-    "id": 6,
-    "title": "das",
-    "description": "das",
+    "id": 4,
+    "title": "Atualizar documentação do projeto",
     "titleColor": "#1e293b",
-    "descriptionColor": "#1e293b",
-    "cardColor": "#ffffff",
+    "description": "Adicionar as últimas alterações e conferir se a documentação está atualizada.",
+    "descriptionColor": "#64748b",
+    "cardColor": "#fef9c3",
+    "status": "progress"
+  },
+  {
+    "id": 5,
+    "title": "Planejar tarefas de amanhã",
+    "titleColor": "#166534",
+    "description": "Definir as prioridades e organizar as atividades do próximo dia.",
+    "descriptionColor": "#64748b",
+    "cardColor": "#dcfce7",
+    "status": "done"
+  },
+  {
+    "id": 6,
+    "title": "Conferir pendências do dia",
+    "titleColor": "#166534",
+    "description": "Verificar as tarefas concluídas e garantir que nenhuma pendência ficou para trás.",
+    "descriptionColor": "#64748b",
+    "cardColor": "#dcfce7",
     "status": "done"
   }
 ]
