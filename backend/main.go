@@ -7,6 +7,8 @@ import (
 
 func main() {
 
+	loadTasks()
+
 	http.HandleFunc("GET /tasks", getTasks)
 	http.HandleFunc("POST /tasks", createTask)
 	http.HandleFunc("PUT /tasks/{id}", updateTask)

@@ -2,18 +2,64 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
+	"os"
 	"strconv"
 )
 
 var tasks = []Task{}
 var nextID = 1
 
+func loadTasks() {
+	data, err := os.ReadFile("tasks.json")
+
+	if err != nil {
+		if os.IsNotExist(err) {
+			tasks = []Task{}
+			nextID = 1
+			return
+		}
+
+		fmt.Println("Erro ao ler tasks.json:", err)
+		return
+	}
+
+	err = json.Unmarshal(data, &tasks)
+
+	if err != nil {
+		fmt.Println("Erro ao interpretar tasks.json:", err)
+		return
+	}
+
+	nextID = 1
+
+	for _, task := range tasks {
+		if task.ID >= nextID {
+			nextID = task.ID + 1
+		}
+	}
+}
+func saveTasks() {
+	data, err := json.MarshalIndent(tasks, "", "  ")
+
+	if err != nil {
+		fmt.Println("Erro ao transformar tasks em JSON:", err)
+		return
+	}
+
+	err = os.WriteFile("tasks.json", data, 0644)
+
+	if err != nil {
+		fmt.Println("Erro ao salvar tasks.json:", err)
+	}
+}
+
 // GET /tasks
 func getTasks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-
 	json.NewEncoder(w).Encode(tasks)
+
 }
 
 // GET /tasks/{id}
@@ -63,7 +109,7 @@ func createTask(w http.ResponseWriter, r *http.Request) {
 	nextID++
 
 	tasks = append(tasks, task)
-
+	saveTasks()
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusCreated)
 
@@ -104,6 +150,7 @@ func updateTask(w http.ResponseWriter, r *http.Request) {
 		if task.ID == id {
 			updatedTask.ID = id
 			tasks[i] = updatedTask
+			saveTasks()
 
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(updatedTask)
@@ -127,12 +174,12 @@ func deleteTask(w http.ResponseWriter, r *http.Request) {
 	for i, task := range tasks {
 		if task.ID == id {
 			tasks = append(tasks[:i], tasks[i+1:]...)
-
+			saveTasks()
 			w.WriteHeader(http.StatusNoContent)
 
 			return
 		}
 	}
-
+	
 	http.Error(w, "Tarefa não encontrada", http.StatusNotFound)
 }

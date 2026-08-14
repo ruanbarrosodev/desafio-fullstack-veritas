@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "dw",
+    "description": "dw",
+    "titleColor": "#1e293b",
+    "descriptionColor": "#1e293b",
+    "cardColor": "#ffffff",
+    "status": "todo"
+  },
+  {
+    "id": 3,
+    "title": "xa",
+    "description": "xa",
+    "titleColor": "#1e293b",
+    "descriptionColor": "#1e293b",
+    "cardColor": "#ffffff",
+    "status": "todo"
+  },
+  {
+    "id": 5,
+    "title": "dsadsad",
+    "description": "das",
+    "titleColor": "#1e293b",
+    "descriptionColor": "#1e293b",
+    "cardColor": "#ffffff",
+    "status": "progress"
+  },
+  {
+    "id": 6,
+    "title": "das",
+    "description": "das",
+    "titleColor": "#1e293b",
+    "descriptionColor": "#1e293b",
+    "cardColor": "#ffffff",
+    "status": "done"
+  }
+]
